@@ -1,6 +1,10 @@
+import random
+
 from django.test import TestCase
 from rest_framework import status
 from rest_framework.reverse import reverse
+
+from url_shortener.utils import encode, decode
 
 
 class LinkTestCase(TestCase):
@@ -8,6 +12,12 @@ class LinkTestCase(TestCase):
 
 	def setUp(self) -> None:
 		pass
+
+	def test_encode_decode(self):
+		for i in range(100000):
+			idx = random.randint(1, 1000000)
+			encoded_string = encode(idx)
+			self.assertEquals(idx, decode(encoded_string))
 
 	def test_link_add_valid(self):
 		default_lifetime = 90
