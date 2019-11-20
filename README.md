@@ -3,12 +3,12 @@ It is a service, that allows you to make your url shorter and more readable.
 Every url will be tracking how many times it was used
 
 ### Installation
-#### Prerequisites
+Prerequisites:
 * python 3.6
 * pip3
 * virtualenv 15.1
 
-If you don't have it installed on your computer, here is the instruction to install these packages in **Ubuntu18.04.03 LTS**.
+If you don't have it installed on your computer, here is the instruction to install these packages in **Ubuntu 18.04.03 LTS**.
 ```
 sudo apt-get install python3.6
 sudo apt-get install python3-pip
@@ -31,14 +31,13 @@ python3 manage.py test
 ```
 Or you can write your own tests inside **url_shortener/tests.py** file
 
-### Clean expired url's
+### Delete expired url's
 User can choose the lifetime for his url. To delete expired url's from database, you can run the following command:
 ```
 python3 manage.py delete_expired_links
 ```
 
-### Api
-#### Endpoints
+### Api Endpoints
 ```
 <domain>/api/links/
 GET:
@@ -54,8 +53,4 @@ POST:
 GET:
     show the information about one specific link
     return: json with fields (url, short_url, original_url, visits, created, lifetime)
-
-<domain>/<encoded_url>
-GET:
-    short url that will redirect you to the original url
 ```
