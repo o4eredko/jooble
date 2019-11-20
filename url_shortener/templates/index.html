@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Jooble Redirect</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet"
+		  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+		  crossorigin="anonymous">
+	<link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body class="bg-info text-white">
+<main id="main">
+	<div class="container">
+		<div class="row">
+			<div class="col-12 col-md-10 col-lg-6 mx-auto">
+				<form class="url-form">
+					<h3 class="form__tittle mb-5 text-center">
+						You can make your url really short
+					</h3>
+					<label class="w-100">
+						Paste in your url*:
+						<input class="form-control my-1" type="url" name="original_url"
+							   placeholder="Url" required>
+						<span class="alert alert-danger d-none"></span>
+					</label>
+					<label class="w-100">
+						Choose lifetime for your url:
+						<input class="form-control my-1" type="number" name="lifetime"
+							   placeholder="Lifetime" min="1" max="360">
+						<span class="alert alert-danger d-none"></span>
+					</label>
+					<div class="alert alert-success d-none"></div>
+					<button class="btn btn-dark mt-3">Make the url short again!</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</main>
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

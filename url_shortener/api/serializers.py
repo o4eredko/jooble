@@ -18,4 +18,4 @@ class LinkSerializer(serializers.HyperlinkedModelSerializer):
 
 	def get_short_url(self, obj):
 		url = get_current_site(self.context.get('request')).domain
-		return f"{url}/{encode(obj.id)}"
+		return f"{self.context.get('request').scheme}://{url}/{encode(obj.id)}"

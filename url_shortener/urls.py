@@ -1,10 +1,9 @@
-from django.urls import path
+from django.urls import path, include
 
-from url_shortener.views import LinkListCreateApiView, LinkDetailApiView, api_root
-
+from url_shortener.views import redirect_view, index
 
 urlpatterns = [
-	path('', api_root, name='api-root'),
-	path('links/', LinkListCreateApiView.as_view(), name='link-list'),
-	path('links/<int:pk>', LinkDetailApiView.as_view(), name='link-detail'),
+	path('', index, name='main-page'),
+	path('api/', include('url_shortener.api.urls')),
+	path('<encoded_url>', redirect_view, name='redirect-link')
 ]
