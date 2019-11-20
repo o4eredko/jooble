@@ -53,10 +53,12 @@ POST:
             lifetime, int from 1 to 360, default is 90, number of days while redirect will be working
     return:
         success: 201 status code and json with fields (url, short_url, original_url, visits, created, lifetime)
-        error: 404 status code and json in format field: error_message
+        error: 400 status code and json in format field: error_message
 
 <domain>/api/links/<id>/
 GET:
     show the information about one specific link
-    return: json with fields (url, short_url, original_url, visits, created, lifetime)
+    return:
+        success: 200 status code and json with fields (url, short_url, original_url, visits, created, lifetime)
+        error: 404 status code
 ```
