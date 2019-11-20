@@ -1,19 +1,29 @@
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import get_object_or_404
-from rest_framework.viewsets import ModelViewSet
-from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from rest_framework import status
+from rest_framework.generics import ListCreateAPIView, RetrieveAPIView
+from rest_framework.response import Response
 
 from url_shortener.models import Link
 from url_shortener.serializers import LinkSerializer
-from url_shortener.utils import decode
+from url_shortener.utils import decode, encode
 
 
-class LinkViewSet(ModelViewSet):
+class LinkListCreateApiView(ListCreateAPIView):
 	queryset = Link.objects.all()
 	serializer_class = LinkSerializer
-	permission_classes = [IsAuthenticatedOrReadOnly]
+
+
+class LinkDetailApiView(RetrieveAPIView):
+	queryset = Link.objects.all()
+	serializer_class = LinkSerializer
 
 
 def redirect_view(request, encoded_url):
-	link = get_object_or_404(Link, id=decode(encoded_url))
+	try:
+		link = get_object_or_404(Link, id=decode(encoded_url))
+	except (ValueError, OverflowError):
+		return HttpResponse(status=status.HTTP_404_NOT_FOUND)
+	link.visits = link.visits + 1
+	link.save()
 	return HttpResponseRedirect(link.original_url)

@@ -1,12 +1,9 @@
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
+from django.urls import path
 
-from url_shortener.views import LinkViewSet, redirect_view
+from url_shortener.views import *
 
-router = DefaultRouter()
-router.register('links', LinkViewSet)
 
 urlpatterns = [
-	path('', include(router.urls)),
-	path('<slug:base62>', redirect_view, name='redirect-link')
+	path('links/', LinkListCreateApiView.as_view(), name='link-list'),
+	path('<encoded_url>', redirect_view, name='redirect-link')
 ]
