@@ -4,20 +4,24 @@ Every url will be tracking how many times it was used
 
 ### Installation
 Prerequisites:
-* python 3.6
+* python 3
 * pip3
-* virtualenv 15.1
+* virtualenv
 
 If you don't have it installed on your computer, here is the instruction to install these packages in **Ubuntu 18.04.03 LTS**.
 ```
-sudo apt-get install python3.6
+sudo apt-get install python
 sudo apt-get install python3-pip
 pip3 install virtualenv
 ```
 Then you need to install project requirements.
 ```
 cd <project directory>
-sh install.sh
+python3 -m virtualenv venv
+source venv/bin/activate
+pip3 install -r requirements.txt
+python3 manage.py makemigrations url_shortener
+python3 manage.py migrate
 ```
 That's all. Now you need to run the server
 ```
