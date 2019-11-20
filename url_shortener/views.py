@@ -6,7 +6,7 @@ from rest_framework.response import Response
 
 from url_shortener.models import Link
 from url_shortener.serializers import LinkSerializer
-from url_shortener.utils import decode, encode
+from url_shortener.utils import decode
 
 
 class LinkListCreateApiView(ListCreateAPIView):
