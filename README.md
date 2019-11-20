@@ -4,7 +4,7 @@ Every url will be tracking how many times it was used
 
 ### Installation
 Prerequisites:
-* python 3
+* python3
 * pip3
 * virtualenv
 
