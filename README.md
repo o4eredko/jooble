@@ -10,7 +10,7 @@ Prerequisites:
 
 If you don't have it installed on your computer, here is the instruction to install these packages in **Ubuntu 18.04.03 LTS**.
 ```
-sudo apt-get install python
+sudo apt-get install python3
 sudo apt-get install python3-pip
 pip3 install virtualenv
 ```
@@ -51,7 +51,9 @@ POST:
     insert link into database
     fields: original_url, url that will be encoded
             lifetime, int from 1 to 360, default is 90, number of days while redirect will be working
-    return: json with fields (url, short_url, original_url, visits, created, lifetime)
+    return:
+        success: 201 status code and json with fields (url, short_url, original_url, visits, created, lifetime)
+        error: 404 status code and json in format field: error_message
 
 <domain>/api/links/<id>/
 GET:
