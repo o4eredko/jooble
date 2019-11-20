@@ -6,6 +6,7 @@ from url_shortener.utils import encode
 
 
 class LinkSerializer(serializers.HyperlinkedModelSerializer):
+	original_url = serializers.URLField()
 	short_url = serializers.SerializerMethodField(read_only=True)
 	visits = serializers.IntegerField(read_only=True)
 	created = serializers.DateTimeField(format='%H:%M:%S %d %b %Y', read_only=True)
