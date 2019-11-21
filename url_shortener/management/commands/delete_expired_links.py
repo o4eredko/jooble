@@ -7,7 +7,7 @@ from url_shortener.models import Link
 
 
 class Command(BaseCommand):
-	help = 'Delete objects older than 10 days'
+	help = 'Delete links that were expired'
 	timezone = pytz.timezone(settings.TIME_ZONE)
 
 	def is_expired(self, link):
